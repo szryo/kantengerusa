@@ -15,15 +15,16 @@ import time
 
 import pigpio
 
-gpio_pin0 = 19
-gpio_pin1 = 18
+gpio_head = 19
+gpio_right = 18
+gpio_regs = 12
+gpio_left = 13
 
 pi = pigpio.pi()
-pi.set_mode(gpio_pin0, pigpio.OUTPUT)
-pi.set_mode(gpio_pin1, pigpio.OUTPUT)
-
-pi.set_servo_pulsewidth(gpio_pin0, 1450)
-pi.set_servo_pulsewidth(gpio_pin1, 1450)
+#pi.set_mode(gpio_head, pigpio.OUTPUT)
+pi.set_mode(gpio_right, pigpio.INPUT)
+pi.set_mode(gpio_left, pigpio.INPUT)
+pi.set_mode(gpio_regs, pigpio.INPUT)
 
 # Use the application default credentials
 cred = credentials.Certificate('./key.json')
@@ -75,20 +76,44 @@ query_watch = col_query.on_snapshot(on_snapshot)
 
 for i in range(100000):
     if mode == 0:
-        pi.set_servo_pulsewidth(gpio_pin0, 1450)
-        pi.set_servo_pulsewidth(gpio_pin1, 1450)
+        #pi.set_mode(gpio_head, pigpio.OUTPUT)
+        pi.set_mode(gpio_right, pigpio.OUTPUT)
+        pi.set_mode(gpio_left, pigpio.OUTPUT)
+        pi.set_mode(gpio_regs, pigpio.OUTPUT)
+        
+        pi.set_servo_pulsewidth(gpio_right, 1450)
+        pi.set_servo_pulsewidth(gpio_left, 1450)
+        pi.set_servo_pulsewidth(gpio_regs, 2500)
+        
+        #pi.set_mode(gpio_head, pigpio.OUTPUT)
+        pi.set_mode(gpio_right, pigpio.INPUT)
+        pi.set_mode(gpio_left, pigpio.INPUT)
+        pi.set_mode(gpio_regs, pigpio.INPUT)
         time.sleep(1)
+        
     elif mode == 1:
-        pi.set_servo_pulsewidth(gpio_pin0, 500)
-        pi.set_servo_pulsewidth(gpio_pin1, 2000)
+        #pi.set_mode(gpio_head, pigpio.OUTPUT)
+        pi.set_mode(gpio_right, pigpio.OUTPUT)
+        pi.set_mode(gpio_left, pigpio.OUTPUT)
+        pi.set_mode(gpio_regs, pigpio.INPUT)
+        
+        pi.set_servo_pulsewidth(gpio_right, 1900)
+        pi.set_servo_pulsewidth(gpio_left, 900)
+        time.sleep(3)
+        pi.set_servo_pulsewidth(gpio_left, 1450)
+        pi.set_servo_pulsewidth(gpio_right, 1450)
         time.sleep(1)
+        
     elif mode == 2:
-        pi.set_servo_pulsewidth(gpio_pin0, 500)
-        pi.set_servo_pulsewidth(gpio_pin1, 2000)
-        time.sleep(0.5)
-        pi.set_servo_pulsewidth(gpio_pin0, 1450)
-        pi.set_servo_pulsewidth(gpio_pin1, 1450)
-        time.sleep(0.5)
+        #pi.set_mode(gpio_head, pigpio.OUTPUT)
+        pi.set_mode(gpio_right, pigpio.INPUT)
+        pi.set_mode(gpio_left, pigpio.INPUT)
+        pi.set_mode(gpio_regs, pigpio.OUTPUT)
+        
+        pi.set_servo_pulsewidth(gpio_regs,1600)
+        time.sleep(1)
+        pi.set_servo_pulsewidth(gpio_regs, 2500)
+        time.sleep(1)
     else:
         time.sleep(1)
-    print(i)
+    print(mode)

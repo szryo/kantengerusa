@@ -1,44 +1,37 @@
 import pigpio
 import time
 
-gpio_pin0 = 19
-gpio_pin1 = 18
+gpio_head = 19
+gpio_right = 18
+gpio_regs = 12
+gpio_left = 13
 
 pi = pigpio.pi()
-pi.set_mode(gpio_pin0, pigpio.OUTPUT)
-pi.set_mode(gpio_pin1, pigpio.OUTPUT)
+pi.set_mode(gpio_left, pigpio.OUTPUT)
+pi.set_mode(gpio_right, pigpio.OUTPUT)
 
-# GPIO18: 20Hz、duty比0.5
-#pi.hardware_PWM(gpio_pin0, 50, 300000)
-#pi.hardware_PWM(gpio_pin1, 50, 300000)
-pi.set_servo_pulsewidth(gpio_pin0, 500)
-pi.set_servo_pulsewidth(gpio_pin1, 2000)
+pi.set_servo_pulsewidth(gpio_left, 1450)
+pi.set_servo_pulsewidth(gpio_right, 1450)
 
-print("1")
-time.sleep(0.5)
-#pi.set_servo_pulsewidth(gpio_pin0, 2000)
-#pi.set_servo_pulsewidth(gpio_pin1, 500)
+print("initialize")
+time.sleep(5)
 
-time.sleep(0.5)
+pi.set_servo_pulsewidth(gpio_left, 1000)
+pi.set_servo_pulsewidth(gpio_right, 1900)
 
-#pi.set_servo_pulsewidth(gpio_pin0, 500)
-#pi.set_servo_pulsewidth(gpio_pin1, 2000)
-#time.sleep(0.5)
+print('hold')
+time.sleep(5)
 
-#pi.set_servo_pulsewidth(gpio_pin0, 2000)
-#pi.set_servo_pulsewidth(gpio_pin1, 500)
+pi.set_servo_pulsewidth(gpio_left, 1450)
+pi.set_servo_pulsewidth(gpio_right, 1450)
 
-time.sleep(0.5)
-#pi.set_servo_pulsewidth(gpio_pin0, 500)
-#pi.set_servo_pulsewidth(gpio_pin1, 2000)
-time.sleep(0.5)
-
-pi.set_servo_pulsewidth(gpio_pin0, 1450)
-pi.set_servo_pulsewidth(gpio_pin1, 1450)
+print("open")
 
 time.sleep(0.5)
 
-#pi.set_mode(gpio_pin0, pigpio.INPUT)
-#pi.set_mode(gpio_pin1, pigpio.INPUT)
+pi.set_mode(gpio_regs, pigpio.INPUT)
+pi.set_mode(gpio_head, pigpio.INPUT)
+pi.set_mode(gpio_right, pigpio.INPUT)
+pi.set_mode(gpio_left, pigpio.INPUT)
 
 pi.stop()
