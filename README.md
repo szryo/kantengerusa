@@ -21,7 +21,7 @@
 * "Xcode": "13.0"
 * "iOS": "15.0"
 
-#server
+# server
 カメラで撮影した動画から感情認識を行い，認識結果をfirestoreに書き込む．<br>
 <br>
 
