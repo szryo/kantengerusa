@@ -21,7 +21,11 @@
 * "Xcode": "13.0"
 * "iOS": "15.0"
 
+#server
+カメラで撮影した動画から感情認識を行い，認識結果をfirestoreに書き込む．<br>
+<br>
 
+  ![Test Image 1](image/.png)
 
 # Acceleration_Collection
 集中度測定のためのデータ収集アプリケーション<br>
