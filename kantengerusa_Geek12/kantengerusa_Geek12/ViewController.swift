@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     // Attitude data
     var outputlist:[Int] = [0,0,0]
     var outputNum:Int = 0
-    var outputgraph:[Int] = []
+    var outputgraph:[Int] = [0]
     var dt = Date()
     let dateFormatter = DateFormatter()
     let db = Firestore.firestore()
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
             stopAccelerometer()
             Button1.setTitle("Start record", for: .normal)
             isStarted = false
-            if (outputlist[0] >= outputlist[1] && outputlist[0] >= outputlist[1]){
+            if (outputlist[0] >= outputlist[1] && outputlist[0] >= outputlist[2]){
                 outputNum = 0
                 Image1.image = image_bad
                 record_stat.text = "もう少し集中しよう！"
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
                 Image1.image = image_normal
                 record_stat.text = "そこそこ集中してたね！"
             } else {
-                outputNum = 2
+                outputNum = 1
                 Image1.image = image_good
                 record_stat.text = "とても集中してました！"
             }
@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         }
         else{
             outputgraph = []
+            outputlist = [0,0,0]
             self.classifier.init_num()
             Image1.image = image2
             record_stat.text = "録音中"
@@ -107,6 +108,11 @@ class ViewController: UIViewController {
         dataset.mode = .cubicBezier
                 
         linechart.data = LineChartData(dataSet: dataset)
+        
+        linechart.leftAxis.axisMaximum = 2 //y左軸最大値
+        linechart.leftAxis.axisMinimum = 0 //y左軸最小値
+        linechart.leftAxis.labelCount = 2 // y軸ラベルの数
+        linechart.rightAxis.enabled = false // 右側の縦軸ラベルを非表示
     }
     
     func stopAccelerometer(){
