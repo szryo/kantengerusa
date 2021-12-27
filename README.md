@@ -21,10 +21,14 @@
 * "Xcode": "13.0"
 * "iOS": "15.0"
 
+
+
 # Acceleration_Collection
 集中度測定のためのデータ収集アプリケーション<br>
 SwiftのCore Motionを用いてデータ収集を行い，firestoreにデータを格納する．<br>
 <br>
+
+  ![Test Image 1](image/corect.png)
 
 
 # kantengerusa_Geek12
