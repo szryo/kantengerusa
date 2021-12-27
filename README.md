@@ -25,7 +25,7 @@
 カメラで撮影した動画から感情認識を行い，認識結果をfirestoreに書き込む．<br>
 <br>
 
-  ![Test Image 1](image/.png)
+  ![Test Image 1](image/vue.png)
 
 # Acceleration_Collection
 集中度測定のためのデータ収集アプリケーション<br>
