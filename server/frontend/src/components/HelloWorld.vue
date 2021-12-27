@@ -39,9 +39,9 @@ Vue.use(ToggleButton)
 import LineChart from './LineChart.js'
 
 const firebaseApp = initializeApp({
-  apiKey: "AIzaSyDqW-OJ8hhMNWi1BRl-lhDLfokvdjzv7VY",
-  authDomain: "m1gp-43b5b.firebaseapp.com",
-  projectId: "m1gp-43b5b",
+  apiKey: "xxx",
+  authDomain: "xxx",
+  projectId: "xxx",
 });
 
 console.log(firebaseApp);
