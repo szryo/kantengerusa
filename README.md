@@ -42,4 +42,4 @@ SwiftのCore Motionを用いてデータ収集を行い，firestoreにデータ�
 
 * 佐瀬凌太
 * 奈良先端科学技術大学院大学
-* yutaubinaist@gmail.com
+* ryota.saze@ubi-lab.com
