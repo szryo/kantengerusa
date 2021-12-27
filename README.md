@@ -21,6 +21,12 @@
 集中度測定のためのデータ収集アプリケーション<br>
 SwiftのCore Motionを用いてデータ収集を行い，firestoreにデータを格納する．
 
+# kantengerusa_Geek12
+集中度を測定を行うアプリです．<br>
+スマホ側では，集中度の評価を行い，画面に表示を行います．<br>
+また，集中度の結果によってぬいぐるみを動作させます．<br>
+![Test Image 1](image/GeekApp.jpg)
+
 # Author
 
 作成情報を列挙する
